@@ -1,0 +1,4 @@
+__pycache__
+
+# Do not save private instance configs
+instance/settings.py
