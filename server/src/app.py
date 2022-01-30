@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 
 def create_app():
@@ -12,13 +12,15 @@ def create_app():
     app.config.from_object('config.settings')
     app.config.from_pyfile('settings.py', silent=True)
 
-    @app.route('/hello')
+    @app.route('/api/hello')
     def index():
         """
         Render a Hello World response.
 
         :return: Flask response
         """
-        return f"Hello {app.config.get('NAME')}"
+        return jsonify({
+            "msg": f"Hello {app.config.get('NAME')}"
+        })
 
     return app
